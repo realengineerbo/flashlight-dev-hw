@@ -1,0 +1,70 @@
+\documentclass[landscape,twocolumn]{article} 
+
+\usepackage{amsmath}
+\usepackage[european resistors]{circuitikz}
+\usepackage{geometry}
+\usepackage{siunitx}
+
+\geometry{left=4cm, right=4cm}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+    \scalebox{1.3}{
+        \begin{circuitikz}
+
+            % Draw resistors
+            \draw (0,3) to [R, l=$R_a$, i_=$i_a$] (0,0);
+            \draw (0,0) to [R, l=$R_b$, i_=$i_b$] (0,-3);
+            \draw (3,0) to [R, l=$R_c$, i=$i_c$] (0,0);
+
+            % Draw labels
+            \draw (0,3) node[vcc]{$V_{out}$};
+
+            \draw (0,-3) node[ground]{};
+
+            \node [circ]() at (0,0) {};
+            \draw (0,0) to (-1,0) node[ocirc]{};
+            \draw (-2,0) node {$V_{FB}=1V$};
+
+            \node [ocirc]() at (3,0) {};
+            \draw (3.8,0) node {$V_{opamp}$};
+
+        \end{circuitikz}
+    }
+\end{center}
+
+\newpage
+
+Where $R_a$ is known (e.g. $\SI{750}{\kilo\ohm}$), and:
+\begin{gather*}
+    V_{out} \propto V_{opamp}^{-1} \\
+    V_{opamp,min}\le V_{opamp}\le V_{opamp,max} \\
+    V_{out,min}\le V_{out}\le V_{out,max}
+\end{gather*}
+
+Currents through resistors:
+\begin{align*}
+    i_a & = \frac{V_{out} - 1}{R_a} \quad & i_b & = \frac{1}{R_b} \quad & i_c & = \frac{V_{opamp} - 1}{R_c}
+\end{align*}
+
+Using Kirchhoff's Current Law:
+\begin{gather*}
+    i_a + i_c = i_b \\
+    \frac{V_{out} - 1}{R_a} + \frac{V_{opamp} - 1}{R_c} = \frac{1}{R_b}
+\end{gather*}
+
+Substituting:
+\begin{gather*}
+    \frac{V_{out,max} - 1}{R_a} + \frac{V_{opamp,min} - 1}{R_c} = \frac{1}{R_b} \\
+    \frac{V_{out,min} - 1}{R_a} + \frac{V_{opamp,max} - 1}{R_c} = \frac{1}{R_b} \\
+    \frac{V_{out,max} - 1}{R_a} + \frac{V_{opamp,min} - 1}{R_c} = \frac{V_{out,min} - 1}{R_a} + \frac{V_{opamp,max} - 1}{R_c}
+\end{gather*}
+
+Finally:
+\begin{gather*}
+    R_c = R_a\frac{V_{opamp,max} - V_{opamp,min}}{V_{out,max} - V_{out,min}}
+\end{gather*}
+
+\end{document}
