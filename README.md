@@ -13,7 +13,7 @@ For a detailed explanation of this project, check out the [video series](https:/
 
 ## Features
 
-The development board is design in [KiCad](https://www.kicad.org/), and features the following:
+The development board is designed in [KiCad](https://www.kicad.org/), and features the following:
 
 * ATtiny1616 microcontroller
 * MP3432 boost converter
