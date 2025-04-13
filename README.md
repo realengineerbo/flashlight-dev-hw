@@ -5,7 +5,7 @@
 
 ## Introduction
 
-This repository contains design files for the development board for a flashlight boost driver. The test firmware can be found in the [firmware repository](https://github.com/realengineerbo/flashlight-dev-fw).
+This repository contains design files for the development board for a flashlight boost driver. The test firmware can be found in the [firmware repository](https://github.com/engineerbo/flashlight-dev-fw).
 
 Also included in the `scripts` subdirectory are Python scripts used to calculate component values during the design process, as well as generate the look-up table for brightness settings.
 
